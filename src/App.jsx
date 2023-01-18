@@ -56,7 +56,7 @@ function App() {
 
   const updateBoard = (index) =>{
     //Si hay algo en esa posicion del tablero o hay ganador
-    //no hace nada
+    //no hace nada en el tablero
     if(board[index] || winner) return
     //Actualiza el tablero
     const newBoard = [...board];
