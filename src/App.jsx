@@ -23,7 +23,7 @@ const WINNER_COMBOS = [
   [0,1,2],
   [3,4,5],
   [6,7,8],
-  [0,3,5],
+  [0,3,6],
   [1,4,7],
   [2,5,8],
   [0,4,8],
@@ -54,6 +54,12 @@ function App() {
     return null;
   }
 
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TURNS.X);
+    setWinner(null);
+  }
+
   const updateBoard = (index) =>{
     //Si hay algo en esa posicion del tablero o hay ganador
     //no hace nada en el tablero
@@ -69,7 +75,7 @@ function App() {
     const newWinner = checkWinner(newBoard);
     if(newWinner) {
       setWinner(newWinner);
-    }
+    } 
   }
 
   // A TENER EN CUENTA QUE LOS ACTUALIZACIONES DE ESTADO SON ASINCRONAS, POR ENDE
@@ -80,6 +86,7 @@ function App() {
   return (
     <main className="board">
       <h1>Tic Tac Toe</h1>
+      <button onClick={resetGame}>Reset Game</button>
       <section className="game">
         {
           board.map((_, index) => {
@@ -103,6 +110,29 @@ function App() {
           {TURNS.O}
         </Square>
       </section>
+      {
+        winner != null && (
+          <section className="winner">
+            <div className="text">
+              <h2>
+                {
+                  winner == false
+                  ? 'Empate'
+                  : 'Ganador: '
+                }
+              </h2>
+              <header className="win">
+                {winner && <Square>{winner}</Square>}
+              </header>
+              <footer>
+                <button onClick={resetGame}>
+                  Empezar de Nuevo
+                </button>
+              </footer>
+            </div>
+          </section>
+        )
+      }
     </main>
 
   )
