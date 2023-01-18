@@ -1,25 +1,23 @@
-import { Square } from "./Square";
+import { Square } from './Square'
 
-export function BoardGame({ board, updateBoard }) {
-    return (
-        <section className="game">
-            {
+export function BoardGame ({ board, updateBoard }) {
+  return (
+    <section className='game'>
+      {
                 board.map((square, index) => {
+                  return (
 
-                    return (
+                    <Square
+                      key={index}
+                      index={index}
+                      updateBoard={updateBoard}
+                    >
+                      {square}
+                    </Square>
 
-                        <Square
-                            key={index}
-                            index={index}
-                            updateBoard={updateBoard}
-                        >
-                            {square}
-                        </Square>
-
-                    )
+                  )
                 })
             }
-        </section>
-    )
-
+    </section>
+  )
 }
