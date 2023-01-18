@@ -5,8 +5,7 @@ export function BoardGame({ board, updateBoard }) {
         <section className="game">
             {
                 board.map((square, index) => {
-                    console.log(square)
-                    console.log(index)
+
                     return (
 
                         <Square
